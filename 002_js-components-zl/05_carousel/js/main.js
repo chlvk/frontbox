@@ -7,84 +7,77 @@ const dotsContainer = carousel.querySelector('.carousel__dots')
 const prevButton = Array.from(carousel.querySelectorAll('.carousel__button'))[0]
 const nextButton = Array.from(carousel.querySelectorAll('.carousel__button'))[1]
 
-const slideWidth = slides[0].getBoundingClientRect().width
-slides.forEach((slide, index) => {
-  slide.style.left = slideWidth * index + 'px'
-})
+const setSlidesPosition = () => {
+  const slideWidth = slides[0].getBoundingClientRect().width
+  slides.forEach((slide, index) => {
+    slide.style.left = slideWidth * index + 'px'
+  })
+}
+
+const switchSlide = (currentSlideIndex, targetSlideIndex) => {
+  const currentSlide = slides[currentSlideIndex]
+  const targetSlide = slides[targetSlideIndex]
+  const destination = getComputedStyle(targetSlide).left
+
+  contents.style.transform = `translateX(-${destination})`
+  currentSlide.classList.remove('is-selected')
+  targetSlide.classList.add('is-selected')
+}
+
+const highlightDot = (currentSlideIndex, targetSlideIndex) => {
+  const currentDot = dots[currentSlideIndex]
+  const targetDot = dots[targetSlideIndex]
+
+  currentDot.classList.remove('is-selected')
+  targetDot.classList.add('is-selected')
+}
+
+const getCurrentSlideIndex = () => {
+  const currentSlide = contents.querySelector('.is-selected')
+  return slides.findIndex(slide => slide === currentSlide)
+}
+
+const showHideArrowButtons = (targetDotIndex) => {
+  if (targetDotIndex === 0) {
+    prevButton.setAttribute('hidden', true)
+    nextButton.removeAttribute('hidden')
+  } else if (targetDotIndex === dots.length - 1) {
+    prevButton.removeAttribute('hidden')
+    nextButton.setAttribute('hidden', true)
+  } else {
+    prevButton.removeAttribute('hidden')
+    nextButton.removeAttribute('hidden')
+  }
+}
 
 nextButton.addEventListener('click', () => {
-  const currentSlide = contents.querySelector('.is-selected')
-  const nextSlide = currentSlide.nextElementSibling
+  const currentSlideIndex = getCurrentSlideIndex()
+  const nextSlideIndex = currentSlideIndex + 1
 
-  const destination = getComputedStyle(nextSlide).left
-  contents.style.transform = 'translateX(-' + destination + ')'
-
-  currentSlide.classList.remove('is-selected')
-  nextSlide.classList.add('is-selected')
-
-  if (!nextSlide.nextElementSibling) {
-    nextButton.setAttribute('hidden', true)
-  }
-
-  prevButton.removeAttribute('hidden')
-
-  const currentDot = dotsContainer.querySelector('.is-selected')
-  const nextDot = currentDot.nextElementSibling
-  currentDot.classList.remove('is-selected')
-  nextDot.classList.add('is-selected')
-
+  switchSlide(currentSlideIndex, nextSlideIndex)
+  showHideArrowButtons(nextSlideIndex)
+  highlightDot(currentSlideIndex, nextSlideIndex)
 })
 
 prevButton.addEventListener('click', () => {
-  const currentSlide = contents.querySelector('.is-selected')
-  const prevSlide = currentSlide.previousElementSibling
+  const currentSlideIndex = getCurrentSlideIndex()
+  const prevSlideIndex = currentSlideIndex - 1
 
-  const destination = getComputedStyle(prevSlide).left
-  contents.style.transform = 'translateX(-' + destination + ')'
-
-  currentSlide.classList.remove('is-selected')
-  prevSlide.classList.add('is-selected')
-
-  if (!prevSlide.previousElementSibling) {
-    prevButton.setAttribute('hidden', true)
-  }
-
-  nextButton.removeAttribute('hidden')
-
-  const currentDot = dotsContainer.querySelector('.is-selected')
-  const prevDot = currentDot.previousElementSibling
-  currentDot.classList.remove('is-selected')
-  prevDot.classList.add('is-selected')
+  switchSlide(currentSlideIndex, prevSlideIndex)
+  showHideArrowButtons(prevSlideIndex)
+  highlightDot(currentSlideIndex, prevSlideIndex)
 })
 
 dotsContainer.addEventListener('click', ({ target }) => {
   const dot = target.closest('.carousel__dot')
-  if (dot) {
-    const clickedDotIndex = dots.findIndex((item) => item === dot)
-    const slideToShow = slides[clickedDotIndex]
+  if (!dot) return
 
-    const destination = getComputedStyle(slideToShow).left
-    contents.style.transform = 'translateX(-' + destination + ')'
+  const currentSlideIndex = getCurrentSlideIndex()
+  const targetSlideIndex = dots.findIndex((item) => item === dot)
 
-    slides.forEach(slide => {
-      slide.classList.remove('is-selected')
-    })
-    slideToShow.classList.add('is-selected')
-
-    dots.forEach(dot => {
-      dot.classList.remove('is-selected')
-    })
-    dot.classList.add('is-selected')
-
-    if (clickedDotIndex === 0) {
-      prevButton.setAttribute('hidden', true)
-      nextButton.removeAttribute('hidden')
-    } else if (clickedDotIndex === dots.length - 1) {
-      prevButton.removeAttribute('hidden')
-      nextButton.setAttribute('hidden', true)
-    } else {
-      prevButton.removeAttribute('hidden')
-      nextButton.removeAttribute('hidden')
-    }
-  }
+  switchSlide(currentSlideIndex, targetSlideIndex)
+  highlightDot(currentSlideIndex, targetSlideIndex)
+  showHideArrowButtons(targetSlideIndex)
 })
+
+setSlidesPosition()
