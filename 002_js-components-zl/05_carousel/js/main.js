@@ -17,7 +17,7 @@ nextButton.addEventListener('click', () => {
   const nextSlide = currentSlide.nextElementSibling
 
   const destination = getComputedStyle(nextSlide).left
-  contents.style.left = '-' + destination
+  contents.style.transform = 'translateX(-' + destination + ')'
 
   currentSlide.classList.remove('is-selected')
   nextSlide.classList.add('is-selected')
@@ -40,7 +40,7 @@ prevButton.addEventListener('click', () => {
   const prevSlide = currentSlide.previousElementSibling
 
   const destination = getComputedStyle(prevSlide).left
-  contents.style.left = '-' + destination
+  contents.style.transform = 'translateX(-' + destination + ')'
 
   currentSlide.classList.remove('is-selected')
   prevSlide.classList.add('is-selected')
@@ -64,7 +64,7 @@ dotsContainer.addEventListener('click', ({ target }) => {
     const slideToShow = slides[clickedDotIndex]
 
     const destination = getComputedStyle(slideToShow).left
-    contents.style.left = '-' + destination
+    contents.style.transform = 'translateX(-' + destination + ')'
 
     slides.forEach(slide => {
       slide.classList.remove('is-selected')
