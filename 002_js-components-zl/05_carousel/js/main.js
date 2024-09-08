@@ -2,10 +2,27 @@
 const carousel = document.querySelector('.carousel')
 const contents = document.querySelector('.carousel__contents')
 const slides = Array.from(document.querySelectorAll('.carousel__slide'))
-const dots = Array.from(document.querySelectorAll('.carousel__dot'))
-const dotsContainer = carousel.querySelector('.carousel__dots')
 const prevButton = Array.from(carousel.querySelectorAll('.carousel__button'))[0]
 const nextButton = Array.from(carousel.querySelectorAll('.carousel__button'))[1]
+const dotsContainer = createDots(slides)
+const dots = [...dotsContainer.children]
+
+function createDots(slides) {
+  const dotsContainer = document.createElement('div')
+  dotsContainer.classList.add('carousel__dots')
+
+  slides.forEach((slide) => {
+    const dot = document.createElement('button')
+
+    dot.classList.add('carousel__dot')
+    dotsContainer.appendChild(dot)
+
+    if (slide.classList.contains('is-selected')) {
+      dot.classList.add('is-selected')
+    }
+  })
+  return dotsContainer
+}
 
 const setSlidesPosition = () => {
   const slideWidth = slides[0].getBoundingClientRect().width
@@ -81,3 +98,4 @@ dotsContainer.addEventListener('click', ({ target }) => {
 })
 
 setSlidesPosition()
+carousel.appendChild(dotsContainer)
