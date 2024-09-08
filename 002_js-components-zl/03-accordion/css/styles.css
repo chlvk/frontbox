@@ -128,7 +128,13 @@ a:active {
 
 /* Accordion content */
 .accordion__content {
-  display: none;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.2s ease-in;
+}
+
+.accordion__inner {
+  display: grid;
   grid-template-columns: 7.5em 1fr;
   grid-column-gap: 1.5em;
   align-items: center;
@@ -140,9 +146,4 @@ a:active {
 .accordion__content svg {
   width: 10em;
   max-width: 100%;
-}
-
-/* new code */
-.accordion.is-open .accordion__content {
-  display: grid;
 }
