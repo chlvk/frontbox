@@ -1,21 +1,24 @@
 'use strict'
 const accordionsContainer = document.querySelector('.accordion-container')
 
+const getAccordionHeight = (accordion) => {
+  const accordionInner = accordion.querySelector('.accordion__inner')
+  if (accordion.classList.contains('is-open')) return 0
+  return accordionInner.getBoundingClientRect().height
+}
+
+const updateAccordion = (accordion, height) => {
+  const accordionContent = accordion.querySelector('.accordion__content')
+  accordion.classList.toggle('is-open')
+  accordionContent.style.height = `${height}px`
+}
+
 accordionsContainer.addEventListener('click', ({ target }) => {
   const accordionHeader = target.closest('.accordion__header')
-  const accordionContent = accordionHeader.nextElementSibling
-  const accordionInner = accordionContent.children[0]
-  if (accordionHeader) {
-    const accordion = accordionHeader.parentElement
-    let height
+  if (!accordionHeader) return
 
-    if (accordion.classList.contains('is-open')) {
-      height = 0
-    } else {
-      height = accordionInner.getBoundingClientRect().height
-    }
+  const accordion = accordionHeader.parentElement
+  const height = getAccordionHeight(accordion)
 
-    accordion.classList.toggle('is-open')
-    accordionContent.style.height = height + 'px'
-  }
+  updateAccordion(accordion, height)
 })
