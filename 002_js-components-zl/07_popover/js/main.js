@@ -6,17 +6,23 @@ const getPopover = (popoverTrigger) => document.querySelector(`#${popoverTrigger
 const createPopover = (popoverTrigger) => {
   const popover = document.createElement('div')
   const innerContent = document.createElement('p')
-  const { target, content, popoverPosition } = popoverTrigger.dataset
+  const { content, popoverPosition } = popoverTrigger.dataset
+  const id = generateUniqueString(6)
 
   popover.classList.add('popover')
-  popover.id = target
+  popover.id = id
   popover.dataset.position = popoverPosition
+  popoverTrigger.dataset.target = id
   innerContent.textContent = content
   popover.appendChild(innerContent)
 
   document.body.appendChild(popover)
 
   return popover
+}
+
+const generateUniqueString = (length) => {
+  return `a${Math.random().toString(36).substring(2, 2 + length)}` //"a" is used to prevent the id from starting with a digit
 }
 
 const calculatePopoverPosition = (popover, popoverTrigger) => {
