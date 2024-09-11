@@ -1,0 +1,107 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.btn-reset {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: #E9EDF1;
+}
+
+.header {
+    min-height: 9em;
+    font-size: 1rem;
+    background-color: #dbe1e8;
+}
+
+.header__wrapper {
+    margin-inline: auto;
+    padding-inline: 0.5em;
+    max-width: 95em;
+    min-height: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #0460bc;
+    margin-right: 0.45em;
+}
+
+.nav__list {
+    display: flex;
+    gap: 3.6em;
+    margin-right: 2.2em;
+}
+
+.nav__link {
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #000;
+}
+
+.nav__link:hover {
+    color: #0460bc;
+}
+
+.nav__link:active {
+    color: #000;
+}
+
+.cart-btn {
+    padding: 0.3em 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    border-radius: 0.4em;
+    background-color: #c3ccd7;
+}
+
+.cart-btn:hover {
+    background-color: #b5c0ce;
+}
+
+
+.cart-btn span {
+    font-size: 1.8rem;
+    color: #000;
+}
