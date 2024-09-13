@@ -1,5 +1,6 @@
 .benefits {
   padding-block: 60px 86px;
+  background-color: var(--white);
 }
 
 .benefits__title {
@@ -13,6 +14,13 @@
   background-position: left top;
   background-size: 24px 24px;
   background-repeat: no-repeat;
+}
+
+.benefits__item_colored {
+  padding: 48px;
+  padding-top: 88px;
+  background-position: 48px 48px;
+  background-color: var(--light-grey);
 }
 
 .benefits__item_delivery {

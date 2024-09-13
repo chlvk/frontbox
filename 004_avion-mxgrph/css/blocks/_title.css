@@ -16,6 +16,10 @@
   font-size: 32px;
 }
 
+.title_large-xl {
+  font-size: 36px;
+}
+
 .title_centered {
   text-align: center;
 }
