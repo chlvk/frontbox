@@ -23,3 +23,8 @@
   color: var(--dark-primary);
   background-color: var(--white)
 }
+
+.btn_theme_extra-dark {
+  color: var(--white);
+  background-color: var(--dark-primary)
+}

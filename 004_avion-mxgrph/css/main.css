@@ -8,6 +8,7 @@
 @import url("blocks/_title.css");
 @import url("blocks/_form.css");
 @import url("blocks/_social.css");
+@import url("blocks/_stepper.css");
 @import url("blocks/_header.css");
 @import url("blocks/_hero.css");
 @import url("blocks/_benefits.css");
@@ -21,3 +22,4 @@
 @import url("blocks/_inner-hero.css");
 @import url("blocks/_catalog.css");
 @import url("blocks/_filters.css");
+@import url("blocks/_single.css");
