@@ -45,8 +45,10 @@
         <div class="hero__inner flex">
           <h1 class="hero__title">This is simply a smarter way to make your legal online</h1>
           <p class="hero__descr">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
-          <button class="hero__btn btn btn-reset">Free 30 Day Trial</button>
-          <span class="hero__info">SSL secured connection</span>
+          <div class="hero__inner-bottom flex">
+            <button class="hero__btn btn btn-reset">Free 30 Day Trial</button>
+            <span class="hero__info">SSL secured connection</span>
+          </div>
         </div>
       </div>
     </section>
@@ -127,7 +129,7 @@
               <a class="blog-post__text" href="#">
                 <time datetime="2021-11-15 00:00:01" class="blog-post__time">15 Nov 2021</time>
                 <h3 class="blog-post__title">Jurisdiction</h3>
-                <p class="blog-post__desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
+                <p class="blog-post__descr">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
               </a>
             </article>
           </li>
@@ -137,7 +139,7 @@
               <a class="blog-post__text" href="#">
                 <time datetime="2021-11-28 00:00:01" class="blog-post__time">28 Nov 2021</time>
                 <h3 class="blog-post__title">Consulting</h3>
-                <p class="blog-post__desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
+                <p class="blog-post__descr">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
               </a>
             </article>
           </li>
@@ -147,7 +149,7 @@
               <a class="blog-post__text" href="#">
                 <time datetime="2021-11-29 00:00:01" class="blog-post__time">29 Nov 2021</time>
                 <h3 class="blog-post__title">Rights and obligations</h3>
-                <p class="blog-post__desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
+                <p class="blog-post__descr">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
               </a>
             </article>
           </li>
@@ -157,7 +159,7 @@
               <a class="blog-post__text" href="#">
                 <time datetime="2021-12-11 00:00:01" class="blog-post__time">11 Dec 2021</time>
                 <h3 class="blog-post__title">Contractors</h3>
-                <p class="blog-post__desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
+                <p class="blog-post__descr">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
               </a>
             </article>
           </li>
@@ -175,8 +177,8 @@
               <div class="clients__item-avatar">
                 <img src="img/clients-1.jpg" alt="Client 1" class="clients__item-img">
               </div>
-              <div class="clients__item-author">
-                <a href="#" class="clients__item-name">John Armstrong</a>
+              <div class="clients__item-author flex">
+                <span class="clients__item-name">John Armstrong</span>
                 <span class="clients__item-occ">Customer</span>
               </div>
             </div>
@@ -187,8 +189,8 @@
               <div class="clients__item-avatar">
                 <img src="img/clients-2.jpg" alt="Client 2" class="clients__item-img">
               </div>
-              <div class="clients__item-author">
-                <a href="#" class="clients__item-name">Elizabeth Martin</a>
+              <div class="clients__item-author flex">
+                <span class="clients__item-name">Elizabeth Martin</span>
                 <span class="clients__item-occ">Customer</span>
               </div>
             </div>
@@ -199,8 +201,8 @@
               <div class="clients__item-avatar">
                 <img src="img/clients-3.jpg" alt="Client 3" class="clients__item-img">
               </div>
-              <div class="clients__item-author">
-                <a href="#" class="clients__item-name">Robin Soutby</a>
+              <div class="clients__item-author flex">
+                <span class="clients__item-name">Robin Soutby</span>
                 <span class="clients__item-occ">Customer</span>
               </div>
             </div>
@@ -215,16 +217,16 @@
         <address class="contacts__address">
           <ul class="contacts__list list-reset flex">
             <li class="contacts__item flex">
-              <b class="contacts__item-caption">Visit Us</b>
+              <b class="contacts__item-caption contacts__item-caption_visit">Visit Us</b>
               <p class="contacts__item-text">Duis autem vel eum iriure dolor in hendrerit in vulputate velit.</p>
             </li>
             <li class="contacts__item flex">
-              <b class="contacts__item-caption">Call Us</b>
+              <b class="contacts__item-caption contacts__item-caption_call">Call Us</b>
               <a class="contacts__item-link" href="tel:+79876543210">+7 (987) 654-32-10</a>
               <a class="contacts__item-link" href="tel:+71234567890">+7 (123) 456-78-90</a>
             </li>
             <li class="contacts__item flex">
-              <b class="contacts__item-caption">Email Us</b>
+              <b class="contacts__item-caption contacts__item-caption_mail">Email Us</b>
               <a href="mailto:example@example.com" class="contacts__item-link">example@example.com</a>
               <a href="mailto:support@example.com" class="contacts__item-link">support@example.com</a>
             </li>
@@ -261,13 +263,13 @@
           </nav>
           <ul class="footer__social social list-reset flex">
             <li class="social__item">
-              <a href="#" class="social__link social__link--tw" aria-label="Twitter icon"></a>
+              <a href="#" class="social__link social__link_tw" aria-label="Twitter icon"></a>
             </li>
             <li class="social__item">
-              <a href="#" class="social__link social__link--ig" aria-label="Instagram icon"></a>
+              <a href="#" class="social__link social__link_ld" aria-label="Linkedin icon"></a>
             </li>
             <li class="social__item">
-              <a href="#" class="social__link social__link--ld" aria-label="Linkedin icon"></a>
+              <a href="#" class="social__link social__link_idk" aria-label="Idk icon"></a>
             </li>
           </ul>
         </div>
