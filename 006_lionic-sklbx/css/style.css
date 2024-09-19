@@ -30,6 +30,10 @@
 }
 
 /* Reset and common classes */
+:root {
+  --gap: 30px;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -51,7 +55,7 @@ img {
 }
 
 body {
-  min-width: 1200px;
+  min-width: 320px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   background-color: #fff;
@@ -116,7 +120,7 @@ body {
   margin-block: 0;
   margin-inline: auto;
   padding: 0 15px;
-  width: 1200px;
+  max-width: 1200px;
 }
 
 .section-title {
@@ -274,14 +278,15 @@ body {
   border-bottom: 1px solid #c4c4c4;
 }
 
+/* Using negative margin for container example */
 .services__list {
-  margin-inline: -15px;
+  margin-inline: calc(-1 * var(--gap) / 2);
 }
 
 .services__item {
-  margin-inline: 15px;
+  margin-inline: calc(var(--gap) / 2);
   padding: 60px 30px;
-  width: 270px;
+  width: calc((100% - 3 * var(--gap)) / 4);
   border: 1px solid #e4e4e4;
   flex-direction: column;
   align-items: center;
@@ -337,13 +342,12 @@ body {
 }
 
 .articles__list {
-  margin: -15px;
   flex-wrap: wrap;
+  gap: var(--gap);
 }
 
 .articles__item {
-  margin: 15px;
-  width: 570px;
+  width: calc((100% - 1 * var(--gap)) / 2);
 }
 
 .blog-post {
@@ -422,13 +426,12 @@ body {
 }
 
 .clients__list {
-  margin-inline: -15px;
+  gap: var(--gap);
 }
 
 .clients__item {
-  margin-inline: 15px;
   padding: 50px 36px 30px;
-  width: 370px;
+  width: calc((100% - 2 * var(--gap)) / 3);
   border: 1px solid #e4e4e4;
   flex-direction: column;
 }
@@ -487,14 +490,13 @@ body {
 }
 
 .contacts__list {
-  margin-inline: -15px;
+  gap: var(--gap);
 }
 
 .contacts__item {
-  margin-inline: 15px;
+  width: calc((100% - 2 * var(--gap)) / 3);
   flex-direction: column;
   align-items: flex-start;
-  width: 370px;
 }
 
 .contacts__item-caption {
