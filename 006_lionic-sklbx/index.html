@@ -235,7 +235,38 @@
       </div>
     </section>
 
-    <section id="join-us" class="join-us"></section>
+    <section id="join-us" class="join-us section-offset">
+      <div class="container">
+        <h2 class="join-us__title section-title">Join us</h2>
+        <p class="join-us__descr section-descr">Take control of your paid subscriptions today!</p>
+        <form action="https://jsonplaceholder.typicode.com/posts" class="join-us__form form flex" method="POST">
+          <div class="form__top flex">
+            <div class="form__top-left flex">
+              <input class="form__input" name="name" type="text" placeholder="Name" required>
+              <input class="form__input" name="email" type="email" placeholder="E-mail" required>
+              <input class="form__input" name="phone" type="tel" placeholder="Phone" required>
+              <select class="form__select" name="country">
+                <option value="country" disabled selected>Country</option>
+                <option value="us">United States</option>
+                <option value="france">France</option>
+                <option value="germany">Germany</option>
+                <option value="spain">Spain</option>
+                <option value="estonia">Estonia</option>
+              </select>
+            </div>
+            <div class="form__top-right flex">
+              <textarea name="comment" class="form__textarea" placeholder="Comment"></textarea>
+            </div>
+          </div>
+          <div class="form__bottom flex">
+            <button class="form__btn btn-reset btn" type="submit">Get Started</button>
+            <label class="form__agreement">
+              <input type="checkbox" class="form__checkbox">
+              I agree with <a href="#">user agreement</a>
+            </label>
+          </div>
+        </form>
+    </section>
   </main>
   <footer class="footer">
     <div class="container">

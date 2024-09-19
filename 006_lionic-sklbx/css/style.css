@@ -352,15 +352,14 @@ body {
 }
 
 .clients__item-name {
-  display: block;
   font-weight: 600;
   font-size: 17px;
 }
 
 .clients__item-occ {
-  display: block;
   font-weight: 400;
   font-size: 14px;
+  color: #787878;
 }
 
 /* Contacts */
@@ -420,6 +419,106 @@ body {
   font-size: 14px;
   line-height: 1.8;
   color: #787878;
+}
+
+/* Join-Us */
+.join-us__title {
+  text-align: center;
+}
+
+.join-us__form {
+  padding-inline: 40px;
+}
+
+.form {
+  --form-gap: 19px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.form__top {
+  margin-bottom: var(--form-gap);
+  gap: var(--form-gap);
+}
+
+.form__top-left {
+  width: calc((100% - var(--form-gap)) / 2);
+  flex-wrap: wrap;
+  gap: var(--form-gap);
+}
+
+.form__input {
+  padding: 15px 27px;
+  width: calc((100% - var(--form-gap)) / 2);
+  border: 1px solid #dadada;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8;
+  background-color: inherit;
+  border-radius: 50px;
+}
+
+.form__select {
+  padding: 15px 27px;
+  width: calc((100% - var(--form-gap)) / 2);
+  border: 1px solid #dadada;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8;
+  background-color: inherit;
+  border-radius: 50px;
+}
+
+.form__input::placeholder {
+  color: #787878;
+}
+
+.form__top-right {
+  width: calc((100% - var(--form-gap)) / 2);
+}
+
+.form__textarea {
+  padding: 15px 27px;
+  border: 1px solid #dadada;
+  flex-grow: 1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8;
+  border-radius: 20px;
+  outline: none;
+  resize: none;
+}
+
+.form__textarea::placeholder {
+  color: #787878;
+}
+
+.form__bottom {
+  flex-direction: column;
+  gap: 9px;
+}
+
+.form__agreement {
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  color: #787878;
+}
+
+.form__checkbox {
+  margin-right: 8px;
+}
+
+.form__agreement a {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #3172b9;
+}
+
+.form__btn {
+  padding-block: 20px;
+  min-width: 230px;
+  border-radius: 50px;
 }
 
 /* Footer */
