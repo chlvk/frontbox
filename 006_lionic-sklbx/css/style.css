@@ -213,6 +213,10 @@ body {
   min-width: 150px;
 }
 
+.header__burger {
+  display: none;
+}
+
 /* Hero */
 .hero {
   padding-block: 113px 134px;
@@ -299,7 +303,7 @@ body {
 }
 
 .services__item-img {
-  margin-bottom: 25px;
+  margin-bottom: 29px;
   fill: #3172b9;
   transition: fill 0.2s ease;
 }
@@ -309,6 +313,7 @@ body {
 }
 
 .services__item-title {
+  margin-block: 0;
   margin-bottom: 15px;
   font-weight: 600;
   font-size: 20px;
@@ -351,12 +356,15 @@ body {
 }
 
 .blog-post {
+  height: 100%;
   border: 1px solid #e4e4e4;
   border-radius: 5px;
   overflow: hidden;
 }
 
 .blog-post__img {
+  width: 180px;
+  flex-shrink: 0;
   object-fit: cover;
 }
 
