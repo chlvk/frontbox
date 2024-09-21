@@ -445,6 +445,7 @@ body {
 }
 
 .clients__item-text {
+  margin-block: 0;
   margin-bottom: 33px;
   font-weight: 400;
   font-size: 14px;
@@ -719,7 +720,7 @@ body {
   margin-right: 28px;
 }
 
-.footer__social {
+.social {
   align-items: center;
   gap: 32px;
 }
@@ -730,9 +731,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.social__link {
   color: #000;
   transition: color 0.2s ease;
 }
