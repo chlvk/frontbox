@@ -74,6 +74,10 @@ body {
   cursor: pointer;
 }
 
+.stop-scroll {
+  overflow: hidden;
+}
+
 .btn {
   position: relative;
   padding: 15px 35px;
@@ -395,7 +399,6 @@ body {
 
 .blog-post__text:active {
   background-color: #0e3b6c;
-  ;
 }
 
 .blog-post__time {
@@ -426,6 +429,12 @@ body {
   line-height: 1.5;
   color: inherit;
   transition: color 0.2s ease;
+}
+
+.articles__btn-wrapper {
+  padding-top: 30px;
+  justify-content: center;
+  display: none;
 }
 
 /* Clents */
