@@ -24,3 +24,5 @@
 @import url("blocks/_filters.css");
 @import url("blocks/_single.css");
 @import url("blocks/_cart.css");
+/*media*/
+@import url("_media.css");

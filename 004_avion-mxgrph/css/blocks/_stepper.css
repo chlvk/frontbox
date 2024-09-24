@@ -32,7 +32,7 @@
   user-select: none;
 }
 
-.stepper__btn_disabled {
+.stepper__btn:disabled {
   color: var(--border-grey);
   pointer-events: none;
 }
