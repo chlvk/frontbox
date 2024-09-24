@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const disableButtons = (value) => {
         stepperButtons.forEach((btn) => {
-          btn.classList.remove('stepper__btn_disabled')
+          btn.disabled = false
         })
         if (value === stepperMin) {
-          stepperBtnMinus.classList.add('stepper__btn_disabled')
+          stepperBtnMinus.disabled = true
         }
         if (value === stepperMax) {
-          stepperBtnPlus.classList.add('stepper__btn_disabled')
+          stepperBtnPlus.disabled = true
         }
       }
 
