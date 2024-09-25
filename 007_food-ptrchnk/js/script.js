@@ -128,34 +128,20 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   /* Menu */
-  const menuData = [
-    {
-      img: 'img/tabs/vegy.jpg',
-      alt: 'vegy',
-      title: 'Меню "Фитнес"',
-      descr: 'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
-      price: '229'
-    },
-    {
-      img: 'img/tabs/elite.jpg',
-      alt: 'elite',
-      title: 'Меню "Премиум"',
-      descr: 'В меню "Премиум" мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
-      price: '550'
-    },
-    {
-      img: 'img/tabs/post.jpg',
-      alt: 'post',
-      title: 'Меню "Постное"',
-      descr: 'Меню "Постное" - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
-      price: '430'
+  const getResources = async (url) => {
+    const res = await fetch(url)
+
+    if (!res.ok) {
+      throw new Error(`Couldn't fetch ${url}, status: ${res.status}`)
     }
-  ]
+
+    return await res.json()
+  }
 
   class MenuCard {
     constructor(data, parentSelector, ...classes) {
       this.img = data.img
-      this.alt = data.alt
+      this.alt = data.altimg
       this.title = data.title
       this.descr = data.descr
       this.price = data.price
@@ -191,9 +177,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  menuData.forEach((item) => {
-    new MenuCard(item, '.menu__field .container', 'menu__item')
-  })
+  const createCards = (data) => {
+    data.forEach((item) => {
+      const { img, altimg, title, descr, price } = item
+      const el = document.createElement('div')
+      el.classList.add('menu__item')
+      el.innerHTML = `
+      <img src="${img}" alt="${altimg}">
+      <h3 class="menu__item-subtitle">${title}</h3>
+      <div class="menu__item-descr">${descr}</div>
+      <div class="menu__item-divider"></div>
+      <div class="menu__item-price">
+          <div class="menu__item-cost">Цена:</div>
+          <div class="menu__item-total"><span>${price}</span> грн/день</div>
+      </div>`
+      document.querySelector('.menu__field .container').append(el)
+    })
+  }
+
+  getResources('http://localhost:3000/menu')
+    .then(data => {
+      data.forEach((obj) => {
+        new MenuCard(obj, '.menu__field .container', 'menu__item')
+      })
+    })
+
+  /* Второй способ рендера (более простой) */
+  getResources('http://localhost:3000/menu')
+    .then(data => createCards(data))
+
+
+
 
   /* Forms */
   const forms = Array.from(document.querySelectorAll('form'))
@@ -233,7 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
       request.addEventListener('load', () => {
         statusMessage.remove()
         if (request.status === 200) {
-          console.log(request.response)
           showMessageModal(message.success)
           form.reset()
         } else {
@@ -242,7 +255,18 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     })
   } */
-  function postData(form) {
+  const postData = async (url, data) => {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: data
+    })
+    return await res.json()
+  }
+
+  function bindPostData(form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault()
 
@@ -256,30 +280,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const formData = new FormData(form)
 
-      const object = {}
-      formData.forEach((value, key) => {
-        object[key] = value
-      })
+      const json = JSON.stringify(Object.fromEntries(formData.entries()))
 
-      fetch('server.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(object)
-      }).then(data => {
-        console.log(data)
-        showMessageModal(message.success)
-        statusMessage.remove()
-      }).catch(() => {
-        showMessageModal(message.failure)
-      }).finally(() => {
-        form.reset()
-      })
+      postData('http://localhost:3000/requests', json)
+        .then(data => {
+          showMessageModal(message.success)
+          statusMessage.remove()
+        }).catch(() => {
+          showMessageModal(message.failure)
+        }).finally(() => {
+          form.reset()
+        })
     })
   }
 
-  forms.forEach(item => postData(item))
+  forms.forEach(item => bindPostData(item))
 
   const showMessageModal = (message) => {
     const prevModalDialog = document.querySelector('.modal__dialog')
@@ -304,4 +319,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000)
   }
 
+  /* Slider */
+  const slider = document.querySelector('.offer__slider')
+  const slides = Array.from(document.querySelectorAll('.offer__slide'))
+  const prevBtn = document.querySelector('.offer__slider-prev')
+  const nextBtn = document.querySelector('.offer__slider-next')
+  const current = document.getElementById('current')
+  const total = document.getElementById('total')
+  const sliderWrapper = document.querySelector('.offer__slider-wrapper')
+  const sliderInner = document.querySelector('.offer__slider-inner')
+  const wrapperWidth = getComputedStyle(sliderWrapper).width
+
+  let slideIndex = 1
+  let offset = 0
+  const dots = []
+
+  total.textContent = addZero(slides.length)
+  current.textContent = addZero(slideIndex)
+  sliderInner.style.width = slides.length * 100 + '%'
+  sliderInner.style.display = 'flex'
+  sliderInner.style.transition = 'all 0.3s ease'
+  sliderWrapper.style.overflow = 'hidden'
+
+  slides.forEach((slide) => {
+    slide.style.width = wrapperWidth
+  })
+
+  slider.style.position = 'relative'
+  const indicators = document.createElement('ol')
+  indicators.classList.add('carousel-indicators')
+  for (let index = 0; index < slides.length; index++) {
+    const dot = document.createElement('li')
+    dot.classList.add('dot')
+    dot.setAttribute('data-slide-to', index + 1)
+    indicators.append(dot)
+    dots.push(dot)
+  }
+  dots[slideIndex - 1].style.opacity = '1'
+  slider.append(indicators)
+
+  nextBtn.addEventListener('click', () => {
+    if (offset === parseInt(wrapperWidth.slice(0, -2)) * (slides.length - 1)) {
+      offset = 0
+    } else {
+      offset += parseInt(wrapperWidth.slice(0, -2))
+    }
+    sliderInner.style.transform = `translateX(-${offset}px)`
+    slideIndex = slideIndex === slides.length ? 1 : slideIndex + 1
+    current.textContent = addZero(slideIndex)
+    dots.forEach(dot => dot.style.opacity = '0.5')
+    dots[slideIndex - 1].style.opacity = '1'
+  })
+
+  prevBtn.addEventListener('click', () => {
+    if (offset === 0) {
+      offset = parseInt(wrapperWidth.slice(0, -2)) * (slides.length - 1)
+    } else {
+      offset -= parseInt(wrapperWidth.slice(0, -2))
+    }
+    sliderInner.style.transform = `translateX(-${offset}px)`
+    slideIndex = slideIndex === 1 ? slides.length : slideIndex - 1
+    current.textContent = addZero(slideIndex)
+    dots.forEach(dot => dot.style.opacity = '0.5')
+    dots[slideIndex - 1].style.opacity = '1'
+  })
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', (e) => {
+      const slideTo = e.target.dataset.slideTo
+      slideIndex = parseInt(slideTo)
+      offset = parseInt(wrapperWidth.slice(0, -2)) * (slideTo - 1)
+      sliderInner.style.transform = `translateX(-${offset}px)`
+      current.textContent = addZero(slideIndex)
+      dots.forEach(dot => dot.style.opacity = '0.5')
+      dots[slideIndex - 1].style.opacity = '1'
+    })
+  })
 })
