@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const user1 = {
+      name: 'Zaza',
+      birthday: '09/28/1900'
+    }
+
+    const user2 = {
+      name: 'Gosha',
+      birthday: '10/28/1900'
+    }
+
+    const isBirthdayToday = (user) => {
+      const today = new Date()
+      const userBirthday = new Date(user.birthday)
+      const todayDateStart = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+      const checkDate = new Date(today.getFullYear(), userBirthday.getMonth(), userBirthday.getDate())
+      return todayDateStart.getTime() === checkDate.getTime()
+    }
+
+    const isBirthdayTodayOptimized = (user) => {
+      const today = new Date()
+      const userBirthday = new Date(user.birthday)
+      if (today.getDate() !== userBirthday.getDate()) return false
+      if (today.getMonth() !== userBirthday.getMonth()) return false
+      return true
+    }
+
+    console.log(isBirthdayToday(user1))
+    console.log(isBirthdayToday(user2))
+    console.log(isBirthdayTodayOptimized(user1))
+    console.log(isBirthdayTodayOptimized(user2))
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
