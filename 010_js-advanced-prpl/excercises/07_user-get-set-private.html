@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    class User {
+      #login
+      #_password
+
+      constructor(login, password) {
+        this.#login = login
+        this.#password = password
+      }
+
+      get login() {
+        return this.#login
+      }
+
+      set #password(value) {
+        this.#_password = [...value].reverse().join('')
+      }
+
+      get #password() {
+        return [...this.#_password].reverse().join('')
+      }
+
+      checkPassword(password) {
+        return this.#password === password
+      }
+
+      changePassword(oldPassword, newPassword) {
+        if (!this.checkPassword(oldPassword)) return
+        this.#password = newPassword
+        return true
+      }
+    }
+
+    const user = new User('kot', 'dimooon')
+    user.login = 'dog'
+    console.log(user.login)
+    console.log(user.checkPassword('dimooon'))
+    console.log(user.changePassword('dimooon', 'slonyara'))
+    console.log(user)
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
