@@ -1,9 +1,9 @@
-const forms = () => {
+import checkDigitInputs from './checkDigitInputs'
+
+const forms = (state) => {
   const formEls = Array.from(document.querySelectorAll('form'))
   const inputEls = Array.from(document.querySelectorAll('input'))
-  const phoneInputEls = Array.from(
-    document.querySelectorAll('input[name=user_phone]')
-  )
+  const phoneInputEls = Array.from(document.querySelectorAll('input[name=user_phone]'))
 
   const messages = {
     loading: 'Loading...',
@@ -26,11 +26,7 @@ const forms = () => {
     })
   }
 
-  phoneInputEls.forEach((item) => {
-    item.addEventListener('input', (e) => {
-      item.value = item.value.replace(/\D/, '')
-    })
-  })
+  checkDigitInputs('input[name=user_phone]')
 
   formEls.forEach((item) => {
     item.addEventListener('submit', (e) => {
@@ -40,6 +36,13 @@ const forms = () => {
       item.append(statusMessageEl)
 
       const formData = new FormData(item)
+      /* Calculator additional formdata */
+      if (item.getAttribute('data-calc') === 'end') {
+        for (let key in state) {
+          formData.append(key, state[key])
+        }
+      }
+      console.log(formData)
       postData('assets/server.php', formData)
         .then((res) => {
           console.log(res)
