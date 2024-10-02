@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const request = new XMLHttpRequest()
+    request.open('get', 'https://dummyjson.com/products')
+    request.send()
+
+    request.addEventListener('load', function () {
+      const response = this.responseText
+      const data = JSON.parse(response)
+      const { products } = data
+      const averagePrice = products.reduce((acc, cur) => acc + cur.price, 0) / products.length
+      console.log(averagePrice.toFixed(2))
+    })
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

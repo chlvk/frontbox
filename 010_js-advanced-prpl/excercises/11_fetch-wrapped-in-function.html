@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let el
+    setTimeout(() => {
+      el = document.querySelector('.filter')
+    }, 1)
+
+    function getData(url, errorMessage, method = 'GET') {
+      return fetch(url, {
+        method
+      })
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`${errorMessage} ${res.status}`)
+          }
+          return res.json()
+        }
+        )
+    }
+
+    getData('https://dummyjson.com/products', 'Can\'t get products')
+      .then(({ products }) => {
+        console.log(products)
+        return getData('https://dummyjson.com/products/' + products[0].id, 'Can\'t get data of the product')
+      })
+      .then(data => {
+        console.log(data)
+        el.innerHTML = data.title
+      })
+      .catch(error => {
+        el.innerHTML = error.message
+      })
+  </script>
+</head>
+
+<body>
+  <div class="filter"></div>
+</body>
+
+</html>
