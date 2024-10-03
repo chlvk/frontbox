@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/destyle.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 
 <body>
@@ -215,7 +216,58 @@
     </div>
 
   </footer>
-
+  <div class="modal" data-modal>
+    <div class="modal__dialog">
+      <header class="modal__header">
+        <h2 class="modal__title">Корзина</h2>
+        <button class="modal__close-btn" aria-label="Close the modal window">
+          <img src="img\close.svg" alt="Close button icon" class="modal__close-btn-icon" aria-hidden="true">
+        </button>
+      </header>
+      <ul class="modal__list">
+        <li class="modal__item">
+          <span class="modal__item-name">Ролл угорь стандарт</span>
+          <span class="modal__item-price">250&#8381;</span>
+          <div class="modal__item-stepper">
+            <div class="stepper">
+              <button class="stepper__btn stepper__btn_minus" aria-label="Decrease quantity">-</button>
+              <input type="number" min="1" max="999" value="1" class="stepper__input">
+              <button class="stepper__btn stepper__btn_plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+        </li>
+        <li class="modal__item">
+          <span class="modal__item-name">Ролл угорь стандарт</span>
+          <span class="modal__item-price">250&#8381;</span>
+          <div class="modal__item-stepper">
+            <div class="stepper">
+              <button class="stepper__btn stepper__btn_minus" aria-label="Decrease quantity">-</button>
+              <input type="number" min="1" max="999" value="1" class="stepper__input">
+              <button class="stepper__btn stepper__btn_plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+        </li>
+        <li class="modal__item">
+          <span class="modal__item-name">Ролл угорь стандарт</span>
+          <span class="modal__item-price">250&#8381;</span>
+          <div class="modal__item-stepper">
+            <div class="stepper">
+              <button class="stepper__btn stepper__btn_minus" aria-label="Decrease quantity">-</button>
+              <input type="number" min="1" max="999" value="1" class="stepper__input">
+              <button class="stepper__btn stepper__btn_plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <footer class="modal__footer">
+        <span class="modal__total-price">1250&#8381;</span>
+        <div class="modal__buttons">
+          <button class="modal__btn btn btn_dark">Оформить заказ</button>
+          <button class="modal__btn btn btn_light">Отмена</button>
+        </div>
+      </footer>
+    </div>
+  </div>
 </body>
 
 </html>
