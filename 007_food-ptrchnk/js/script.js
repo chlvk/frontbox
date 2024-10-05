@@ -284,6 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       postData('http://localhost:3000/requests', json)
         .then(data => {
+          console.log(data)
           showMessageModal(message.success)
           statusMessage.remove()
         }).catch(() => {
@@ -395,4 +396,98 @@ document.addEventListener('DOMContentLoaded', () => {
       dots[slideIndex - 1].style.opacity = '1'
     })
   })
+
+  /* Calculator */
+  const result = document.querySelector('.calculating__result span')
+  let sex, ratio, height, weight, age
+  if (localStorage.getItem('sex')) {
+    sex = localStorage.getItem('sex')
+  } else {
+    sex = 'female'
+    localStorage.setItem('sex', sex)
+  }
+  if (localStorage.getItem('ratio')) {
+    ratio = localStorage.getItem('ratio')
+  } else {
+    ratio = 1.375
+    localStorage.setItem('ratio', ratio)
+  }
+
+  const initLocalSettings = (selector, activeClass) => {
+    const els = Array.from(document.querySelectorAll(selector))
+    els.forEach((elem) => {
+      elem.classList.remove(activeClass)
+      if (elem.id === localStorage.getItem('sex')) {
+        elem.classList.add(activeClass)
+      }
+      if (elem.dataset.ratio === localStorage.getItem('ratio')) {
+        elem.classList.add(activeClass)
+      }
+    })
+
+
+  }
+
+  const calcTotal = () => {
+    if (!sex || !height || !weight || !age || !ratio) {
+      result.textContent = '###'
+      return
+    }
+    if (sex === 'female') {
+      result.textContent = Math.round((447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)) * ratio)
+    } else {
+      result.textContent = Math.round((88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * ratio)
+    }
+  }
+
+  const getStaticData = (parentSelector, activeClass) => {
+    const els = Array.from(document.querySelectorAll(`${parentSelector} div`))
+    document.querySelector(parentSelector).addEventListener('click', ({ target }) => {
+      if (!target.hasAttribute('data-static')) return
+      if (target.hasAttribute('data-ratio')) {
+        ratio = +target.dataset.ratio
+        localStorage.setItem('ratio', +target.dataset.ratio)
+      } else {
+        sex = target.id
+        localStorage.setItem('sex', target.id)
+      }
+      els.forEach(item => {
+        item.classList.remove(activeClass)
+      })
+      target.classList.add(activeClass)
+      calcTotal()
+    })
+  }
+
+  const getDynamicData = (selector) => {
+    const input = document.querySelector(selector)
+    input.addEventListener('input', () => {
+
+      if (input.value.match(/\D/g)) {
+        input.style.outline = '1px solid red'
+      } else {
+        input.style.outline = 'none'
+      }
+
+      switch (input.id) {
+        case 'height':
+          height = +input.value
+          break
+        case 'age':
+          age = +input.value
+          break
+        case 'weight':
+          weight = +input.value
+          break
+      }
+      calcTotal()
+    })
+  }
+
+  initLocalSettings('[data-static]', 'calculating__choose-item_active')
+  getStaticData('#gender', 'calculating__choose-item_active')
+  getStaticData('.calculating__choose_big', 'calculating__choose-item_active')
+  getDynamicData('#height')
+  getDynamicData('#weight')
+  getDynamicData('#age')
 })
