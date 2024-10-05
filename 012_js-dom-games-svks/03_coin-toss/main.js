@@ -4,25 +4,26 @@ const resultEl = document.querySelector('.result')
 const messageEl = document.querySelector('.message')
 const score = [0, 0]
 const variants = ['Heads', 'Tails']
+let animationId_1, animationId_2
 
 const getComputerGuess = (variants) => {
   return variants[Math.floor(Math.random() * variants.length)]
 }
 
 const updateRoundWinner = (winner) => {
-  resultEl.classList.remove('animation')
+  clearTimeout(animationId_1)
   resultEl.classList.add('animation')
   resultEl.innerHTML = `Round winner: ${winner}`
-  setTimeout(function () {
+  animationId_1 = setTimeout(function () {
     resultEl.classList.remove('animation')
   }, 500)
 }
 
 const updateMessage = (result) => {
-  messageEl.classList.remove('animation')
+  clearTimeout(animationId_2)
   messageEl.classList.add('animation')
   messageEl.innerHTML = `Computer choose: ${result}`
-  setTimeout(function () {
+  animationId_2 = setTimeout(function () {
     messageEl.classList.remove('animation')
   }, 500)
 }
