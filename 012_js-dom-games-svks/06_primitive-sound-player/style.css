@@ -1,0 +1,19 @@
+.zoo {
+  display: flex;
+  gap: 30px;
+}
+
+.animal {
+  width: 150px;
+  height: 100px;
+  display: grid;
+  place-content: center;
+  text-transform: capitalize;
+  border: 1px solid #a4a4a4;
+  cursor: pointer;
+}
+
+.active {
+  color: red;
+  border: 1px solid red;
+}
