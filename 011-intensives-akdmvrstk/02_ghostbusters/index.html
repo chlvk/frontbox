@@ -9,7 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/destyle.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -57,10 +59,10 @@
         <div class="movie__inner">
           <div class="movie__media">
             <img src="img/poster.jpg" alt="" class="movie__poster" width="358" height="464">
-            <button class="movie__media-btn btn btn_light">
+            <a class="movie__media-btn btn btn_light" href="https://www.youtube.com/watch?v=ahZFCF--uRY" data-fancybox="video-gallery">
               <img src="img/play.svg" alt="Play the trailer" class="movie__media-btn-icon" aria-hidden="true">
               <span>Посмотреть трейлер</span>
-            </button>
+            </a>
           </div>
           <div class="movie__metadata">
             <h1 class="movie__title">
@@ -114,14 +116,14 @@
     <section class="staff">
       <div class="container">
         <div class="staff__header">
-          <div class="staff__tab staff__tab_active" role="button">
+          <div class="staff__tab staff__tab_active" role="button" data-staff="actors">
             <h2>Актеры</h2>
           </div>
-          <div class="staff__tab" role="button">
+          <div class="staff__tab" role="button" data-staff="creators">
             <h2>Создатели</h2>
           </div>
         </div>
-        <div class="staff__tab-content">
+        <div class="staff__tab-content staff__tab-content_active" data-staff="actors">
           <ul class="staff__list">
             <li class="staff__item">
               <a href="#" class="staff__link person">
@@ -192,6 +194,19 @@
                 <div class="person__name">
                   <span class="person__name-rus">Финн Вулфард</span>
                   <span class="person__name-eng">Finn Wolfhard</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="staff__tab-content" data-staff="creators">
+          <ul class="staff__list">
+            <li class="staff__item">
+              <a href="#" class="staff__link person">
+                <img class="person__img" src="img/director-1.jpg" alt="Person image" width="100" height="100">
+                <div class="person__name">
+                  <span class="person__name-rus">Джейсон Райтман</span>
+                  <span class="person__name-eng">Jason Reitman</span>
                 </div>
               </a>
             </li>
