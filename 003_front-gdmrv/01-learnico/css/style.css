@@ -9,6 +9,7 @@
   --c-scallop-shell: #FCD8CA;
   --c-midnight-express: #1F2937;
   --c-midnight-navy: #374151;
+  --c-mystical-shade: #4B5563;
 }
 
 body {
@@ -31,6 +32,7 @@ img {
 .btn {
   padding: 12px;
   display: inline-flex;
+  justify-content: center;
   font-family: var(--ff-dm-sans);
   font-weight: 400;
   font-size: 16px;
@@ -77,11 +79,23 @@ img {
 }
 
 .title_x1 {
-  font-size: 56px;
+  font-size: clamp(1.875rem, 2.889vw + 1.153rem, 3.5rem);
 }
 
 .title_x2 {
-  font-size: 48px;
+  font-size: clamp(1.875rem, 2vw + 1.375rem, 3rem);
+}
+
+.title_x3 {
+  font-size: clamp(1.25rem, 0.444vw + 1.139rem, 1.5rem);
+  line-height: 1.4;
+}
+
+.descr {
+  margin-bottom: 39px;
+  font-weight: 400;
+  font-size: clamp(0.938rem, 0.333vw + 0.854rem, 1.125rem);
+  line-height: 1.5;
 }
 
 .badge {
@@ -189,6 +203,11 @@ img {
   min-width: 106px;
 }
 
+/* Main */
+.main {
+  background-color: var(--c-white);
+}
+
 /* Entry */
 .entry {
   padding-bottom: 377px;
@@ -203,12 +222,8 @@ img {
 }
 
 .entry__descr {
-  margin-bottom: 48px;
   max-width: 565px;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--c-white)
+  color: var(--c-white);
 }
 
 .entry__buttons {
@@ -294,9 +309,14 @@ img {
 
 /* About Us */
 .about-us {
-  margin-top: -213px;
+  --min-height: 425px;
+  margin-bottom: calc(-1 * var(--min-height) / 2 + 160px);
+  transform: translateY(-50%);
+}
+
+.about-us__inner {
   padding-block: 64px;
-  min-height: 425px;
+  min-height: var(--min-height);
   text-align: center;
   background-color: var(--c-scallop-shell);
   border-radius: 24px;
@@ -307,12 +327,164 @@ img {
 }
 
 .about-us__descr {
-  margin-bottom: 39px;
   margin-inline: auto;
   max-width: 730px;
+  text-align: center;
+  color: var(--c-midnight-navy);
+}
+
+/* Feature */
+.feature {
+  padding-bottom: 128px;
+}
+
+.feature__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 576px));
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px
+}
+
+.feature_reverse .feature__col_text {
+  order: -1;
+}
+
+.feature__img {
+  border-radius: 24px;
+}
+
+.feature__descr {
+  color: var(--c-mystical-shade);
+}
+
+.feature__buttons {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.feature__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trending {
+  margin-bottom: 128px;
+  text-align: center;
+}
+
+.trending__badge {
+  margin-bottom: 11px;
+}
+
+.trending__descr {
+  margin-bottom: 63px;
+  margin-inline: auto;
+  max-width: 730px;
+  color: var(--c-mystical-shade);
+}
+
+.trending__list {
+  display: flex;
+  gap: 32px;
+}
+
+.trending__item {
+  width: calc((100% - (2 * 32px)) / 3);
+  text-align: initial;
+}
+
+.tranding__course {
+  height: 100%;
+}
+
+.course {
+  position: relative;
+  padding: 32px 24px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  color: var(--c-white);
+  background-color: var(--c-artist-blue);
+  border-radius: 16px;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+}
+
+.course__title {
+  margin-bottom: 15px;
+}
+
+.course__price {
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  text-align: center;
+}
+
+.course__btn {
+  z-index: 2;
+  margin-top: auto;
+}
+
+.course__img {
+  position: absolute;
+  width: calc(315/400 * 100%);
+  height: auto;
+  bottom: calc(-45 / 500 * 100%);
+  right: calc(-105 / 405 * 100%);
+  border-radius: 100%;
+}
+
+/* Join Us */
+.join-us {
+  margin-bottom: 191px;
+}
+
+.join-us__inner {
+  margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.join-us__col_text {
+  padding: 64px;
+  background-color: var(--c-scallop-shell);
+}
+
+.join-us__badge {
+  margin-bottom: 11px;
+}
+
+.join-us__descr {
   color: var(--c-midnight-navy);
+}
+
+.join-us__img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.join-us__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 64px;
+}
+
+.join-us__item-img {
+  margin-bottom: 32px;
+}
+
+.join-us__item-title {
+  margin-bottom: 24px;
+}
+
+.join-us__item-descr {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--c-mystical-shade);
 }
