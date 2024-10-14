@@ -1,0 +1,20 @@
+.container {
+  width: min(100%, 600px);
+}
+
+.panel__header {
+  padding: 0.5rem;
+  border: 1px solid darkblue;
+  color: blue;
+  background-color: tan;
+  cursor: pointer;
+}
+
+.panel__body {
+  padding: 0.5rem;
+  display: none;
+}
+
+.panel_active .panel__body {
+  display: block;
+}

@@ -1,6 +1,6 @@
 let myBlockEl
 let keysListEl
-const keysList = []
+let keysList = []
 let running = false
 
 const getHexColor = () => '#' + Math.random().toString().slice(-6)
