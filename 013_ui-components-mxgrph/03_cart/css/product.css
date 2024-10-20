@@ -151,3 +151,8 @@
 .product__btn {
   width: 100%;
 }
+
+.product__btn:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
