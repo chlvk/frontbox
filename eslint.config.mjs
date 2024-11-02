@@ -6,7 +6,8 @@ export default [
   {
     files: ["**/*.js"],
     languageOptions: {
-      sourceType: "script"
+      // sourceType: "script",
+      sourceType: "module"
     }
   },
   {
