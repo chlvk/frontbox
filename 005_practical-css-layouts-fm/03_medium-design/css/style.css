@@ -141,9 +141,10 @@
   }
 
   .button-soldout {
-    background: linear-gradient(to top right, transparent calc(50% - 2px), var(--magenta50), transparent calc(50% + 2px));
+    background-image: linear-gradient(to top right, transparent calc(50% - 2px), var(--magenta50), transparent calc(50% + 2px));
     color: var(--magenta50);
     border-color: var(--magenta50);
+    /* pointer-events: none; */
   }
 
   .button-primary:hover {
