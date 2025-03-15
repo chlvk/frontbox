@@ -1,0 +1,134 @@
+@media (max-width:1919px) {
+  .motivation-card-image {
+    margin-block: -20px;
+    max-width: 45%;
+  }
+}
+
+@media (max-width:1280px) {
+  .types-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .types-item {
+    --typesBgIconSize: 70px;
+    background-position: 75% 0;
+  }
+}
+
+@media (max-width:1024px) {
+  .header {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    padding-top: 20px;
+    padding-inline: 15px;
+  }
+
+  .header-menu {
+    order: 1;
+    flex-basis: 100%;
+  }
+
+  .header-menu-link {
+    height: 50px;
+  }
+
+  .banner {
+    row-gap: 10px;
+    padding-inline: 15px;
+  }
+
+  .banner-info {
+    margin-bottom: 10px;
+  }
+
+  .motivation-card {
+    padding-block: 50px;
+  }
+
+  .motivation-card-image {
+    max-width: 30%;
+    margin-block: 0;
+  }
+
+  .types {
+    padding-block: 35px 60px;
+  }
+
+  .join-us-body {
+    padding-bottom: 60px;
+  }
+
+  .join-us-title:not(:last-child) {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width:767px) {
+  .button {
+    padding-inline: 16px;
+  }
+
+  .header-inner {
+    column-gap: 16px;
+    padding-top: 10px;
+  }
+
+  .header-menu-list {
+    column-gap: 24px;
+  }
+
+  .header-menu-link {
+    height: 32px;
+  }
+
+  .header-actions {
+    column-gap: 16px;
+  }
+
+  .motivation-item:nth-child(n) .motivation-card {
+    flex-direction: column-reverse;
+    row-gap: 32px;
+    padding-block: 32px;
+  }
+
+  .motivation-card-description:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .motivation-card-image {
+    max-width: 60%;
+  }
+
+  .types-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .types-item {
+    --typesBgIconSize: 50px;
+    row-gap: 24px;
+  }
+
+  .types-item-image {
+    max-width: 120px;
+  }
+
+  .join-us-video-play-button {
+    width: 140px;
+  }
+
+  .join-us-title:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .join-us-form-subtitle {
+    font-size: 16px;
+  }
+
+  .join-us-form-body {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+}
