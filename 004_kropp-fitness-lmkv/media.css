@@ -62,11 +62,79 @@
   .join-us-title:not(:last-child) {
     margin-bottom: 80px;
   }
+
+  .location-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .location-map-image {
+    order: 1;
+    max-width: 800px;
+    justify-self: center;
+  }
+
+  .location-body {
+    padding-block: 60px;
+  }
+
+  .family-header {
+    padding-block: 60px 35px;
+  }
+
+  .family-body {
+    column-gap: 12px;
+  }
+
+  .family-image {
+    height: 360px;
+  }
+
+  .calculate {
+    padding-block: 100px;
+  }
+
+  .calculate-inner {
+    column-gap: 20px;
+  }
+
+  .calculate-form-body {
+    grid-template-columns: 1fr;
+  }
+
+  .calculate-table :is(td, th) {
+    padding-block: 10px;
+  }
+
+  .calculate-table-footer td {
+    padding-block: 10px 0;
+  }
+
+  .calculate-form-button {
+    width: 100%;
+  }
+
+  .footer-main {
+    padding-block: 60px;
+  }
+
+  .footer-header {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+
+  .footer-body {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 30px;
+  }
 }
 
 @media (max-width:767px) {
   .button {
     padding-inline: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
   }
 
   .header-inner {
@@ -122,13 +190,46 @@
     margin-bottom: 40px;
   }
 
-  .join-us-form-subtitle {
-    font-size: 16px;
-  }
-
   .join-us-form-body {
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
+  }
+
+  .location-description:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .family-image {
+    height: 180px;
+  }
+
+  .calculate {
+    padding-block: 60px;
+  }
+
+  .calculate-inner {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  .calculate-table-wrapper::before {
+    display: none;
+  }
+
+  .footer-main {
+    padding-block: 50px;
+  }
+
+  .footer-header:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .footer-body {
+    grid-template-columns: 1fr;
+  }
+
+  .subscribe:not(:last-child) {
+    margin-bottom: 40px;
   }
 }
