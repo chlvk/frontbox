@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.visible-tablet {
+  @include tablet-above {
+    // display: none !important;
+    display: none;
+  }
+}
+
+.hidden-tablet {
+  @include tablet {
+    // display: none !important;
+    display: none;
+  }
+}
+
+.visible-mobile {
+  @include mobile-above {
+    // display: none !important;
+    display: none;
+  }
+}
+
+.hidden-mobile {
+  @include mobile {
+    // display: none !important;
+    display: none;
+  }
+}
