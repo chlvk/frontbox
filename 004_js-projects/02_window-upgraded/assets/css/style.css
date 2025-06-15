@@ -4,6 +4,7 @@
 html {
   /* overflow-x: hidden; */
   font-size: 10px;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -398,14 +399,12 @@ textarea:focus {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   border-top: 0.5rem solid #0089cd;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#c7dce9),
-    color-stop(0%, #c7dce9),
-    to(rgba(255, 255, 255, 0))
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      from(#c7dce9),
+      color-stop(0%, #c7dce9),
+      to(rgba(255, 255, 255, 0)));
   background: linear-gradient(180deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
 }
 
@@ -426,14 +425,12 @@ textarea:focus {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   border-top: 0.5rem solid #ffb903;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#f7eac9),
-    color-stop(0%, #f7eac9),
-    to(rgba(255, 255, 255, 0))
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      from(#f7eac9),
+      color-stop(0%, #f7eac9),
+      to(rgba(255, 255, 255, 0)));
   background: linear-gradient(180deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
 }
 
@@ -553,14 +550,12 @@ textarea:focus {
   border-top: 1rem solid #0089cd;
   height: 8rem;
   padding: 2rem 0;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#ebebeb),
-    color-stop(0%, #ebebeb),
-    to(rgba(255, 255, 255, 0))
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      from(#ebebeb),
+      color-stop(0%, #ebebeb),
+      to(rgba(255, 255, 255, 0)));
   background: linear-gradient(180deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
 }
 
@@ -719,6 +714,7 @@ textarea:focus {
 .container1 {
   display: inline-block;
 }
+
 .numbers1 {
   display: block;
   float: left;
@@ -733,6 +729,7 @@ textarea:focus {
   border-radius: 7px;
   padding: 4px;
 }
+
 .description1 {
   font-size: 18px;
   text-align: center;
@@ -1051,7 +1048,7 @@ textarea:focus {
   vertical-align: middle;
 }
 
-.popup_calc_profile_content .checkbox:checked + .checkbox-custom::before {
+.popup_calc_profile_content .checkbox:checked+.checkbox-custom::before {
   content: '';
   display: block;
   position: absolute;
@@ -1821,6 +1818,7 @@ textarea:focus {
   from {
     opacity: 0.1;
   }
+
   to {
     opacity: 1;
   }
