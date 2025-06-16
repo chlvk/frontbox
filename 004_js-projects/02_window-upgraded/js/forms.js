@@ -1,3 +1,6 @@
+import {bindInputsCheck} from './util.js';
+import {clearWindowOptionsState, getWindowOptionsState} from './window-state.js';
+
 const SERVER_URL = '../assets/server.php';
 const STATUS_MESSAGE_SHOW_TIME = 3000;
 const PHONE_REGEXP = /\D/;
@@ -10,7 +13,6 @@ const Messages = {
 
 const formNodes = document.querySelectorAll('form');
 const inputNodes = document.querySelectorAll('input');
-const phoneInputNodes = document.querySelectorAll('input[name="user_phone"]');
 
 const postData = async (url, data) => {
   const statusMessageNode = document.querySelector('.status');
@@ -30,15 +32,6 @@ const clearInputs = () => {
   });
 };
 
-const bindPhoneInputs = () => {
-  phoneInputNodes.forEach((item) => {
-    item.addEventListener('input', () => {
-      // не делать так в реальных проектах
-      item.value = item.value.replace(PHONE_REGEXP, '');
-    });
-  });
-};
-
 const bindForms = () => {
   formNodes.forEach((item) => {
     item.addEventListener('submit', (evt) => {
@@ -49,6 +42,15 @@ const bindForms = () => {
       item.append(statusMessageNode);
 
       const formData = new FormData(item);
+
+      // срабатывает на последней модальной форме калькулятора, чтобы добавить все данные калькулятора в запрос
+      if (item.getAttribute('data-calc') === 'end') {
+        const state = getWindowOptionsState();
+        for (const key in state) {
+          formData.append(key, state[key]);
+        }
+        clearWindowOptionsState();
+      }
 
       postData(SERVER_URL, formData)
         .then(() => {
@@ -66,7 +68,9 @@ const bindForms = () => {
 };
 
 const initForms = () => {
-  bindPhoneInputs();
+  bindInputsCheck('input[name=user_phone]', PHONE_REGEXP);
+  bindInputsCheck('#width', PHONE_REGEXP);
+  bindInputsCheck('#height', PHONE_REGEXP);
   bindForms();
 };
 
