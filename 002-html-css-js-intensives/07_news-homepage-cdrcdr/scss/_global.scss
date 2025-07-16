@@ -7,6 +7,8 @@
   --c-red: #f15d51;
   --c-silver: #c5c6ce;
   --c-yellow: #e9aa52;
+  // https://royalfig.github.io/fluid-typography-calculator/
+  // min: 40px, max: 56px, minVw: 375px, maxVw: 1440px
   --f-xl: #{clamp(u.rem(40), 2.147887323943662rem + 1.5023474178403755vw, u.rem(56))};
   --f-l: #{clamp(u.rem(32), 1.823943661971831rem + 0.7511737089201878vw, u.rem(40))};
   --f-m: #{u.rem(32)};
@@ -16,8 +18,8 @@
 }
 
 html {
-  font-size: 100%;
   box-sizing: border-box;
+  font-size: 100%;
 }
 
 *,
@@ -27,13 +29,13 @@ html {
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
+  margin: 0;
+  padding-block-end: u.rem(64);
   font-family: "Inter", sans-serif;
   font-size: var(--f-body);
   line-height: 1.7;
   color: var(--c-gray);
-  padding-block-end: 50vh;
 }
 
 h1,
@@ -58,20 +60,24 @@ a {
 
 img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
-ul {
+.list-reset {
   margin: 0;
   padding: 0;
-}
-li {
   list-style-type: none;
 }
 
+.btn-reset {
+  padding: 0;
+  background: none;
+  border: none;
+}
+
 .wrapper {
-  width: min(u.rem(1110), calc(100% - u.rem(32)));
+  width: min(u.rem(1110), calc(100% - u.rem(32))); // 16px-padding on small viewports
   margin-inline: auto;
 }
 
@@ -88,4 +94,9 @@ li {
 
 .noscroll {
   overflow-y: hidden;
+}
+
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
 }
