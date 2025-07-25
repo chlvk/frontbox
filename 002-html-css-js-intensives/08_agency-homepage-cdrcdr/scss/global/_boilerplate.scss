@@ -7,11 +7,12 @@
 }
 
 body {
-  min-height: 150vh;
+  min-height: 350vh;
   margin: 0;
   font-family: "Manrope", Arial, Helvetica, sans-serif;
   font-size: clamp(u.rem(16), 0.9353448275862069rem + 0.27586206896551724vw, u.rem(18));
   line-height: 1.7;
+  background-color: var(--color-white);
 }
 
 h1,
@@ -41,4 +42,9 @@ a:active {
 .wrapper {
   width: min(100% - u.rem(32), u.rem(1110));
   margin-inline: auto;
+}
+
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
 }

@@ -6,17 +6,6 @@ h3 {
   font-family: "Fraunces", Georgia, "Times New Roman", Times, serif;
   line-height: 1.1;
   font-weight: 600;
-
-  span {
-    display: inline-block;
-
-    &::after {
-      content: "";
-      display: block;
-      height: 2px;
-      background-color: var(--color-green);
-    }
-  }
 }
 
 h1 {
