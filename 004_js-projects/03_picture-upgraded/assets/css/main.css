@@ -39,6 +39,7 @@
 
 html {
   font-size: 10px;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -1003,6 +1004,7 @@ h4 {
 .feedback {
   background-color: #f7e7e6;
   padding: 9rem 0;
+  overflow-x: hidden;
 }
 
 .feedback-slider-item {
@@ -1085,12 +1087,26 @@ h4 {
 }
 
 .often-questions .accordion-block {
-  margin-top: 1rem;
   background-color: #f7e7e6;
-  padding: 3rem 4rem;
+  height: 0;
+  opacity: 0;
+  overflow-y: hidden;
+  transition: all 0.3s ease-in-out;
+  margin-top: 1em;
 }
 
-.often-questions .accordion-block:before {
+.often-questions .accordion-block.is-open {
+  overflow: visible;
+  opacity: 1;
+  height: auto;
+}
+
+.accordion-block p {
+  position: relative;
+  padding: 2rem;
+}
+
+.often-questions .accordion-block p:before {
   content: '';
   position: absolute;
   left: 50%;
@@ -1098,6 +1114,13 @@ h4 {
   top: -6rem;
   border: 3rem solid transparent;
   border-bottom: 3rem solid #f7e7e6;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+}
+
+.often-questions .accordion-block.is-open p:before {
+  opacity: 1;
+  transition: all 0.1s ease-in-out;
 }
 
 .often-questions .ui-accordion-header-active {
@@ -2096,4 +2119,18 @@ h4 {
     padding: 3rem 3rem;
     width: 25rem;
   }
+}
+
+.pageup {
+  opacity: 0;
+  width: 26px;
+  height: 26px;
+  position: fixed;
+  bottom: 100px;
+  right: 5%;
+  z-index: 30;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid white;
+  transition: 1s all;
 }
