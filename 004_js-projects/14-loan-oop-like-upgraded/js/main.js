@@ -1,3 +1,5 @@
+import DifferenceInfo from './difference-info.js';
+import Forms from './forms.js';
 import MainSlider from './sliders/slider-main.js';
 import MiniSlider from './sliders/slider-mini.js';
 import VideoPlayer from './video-player.js';
@@ -38,4 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const player = new VideoPlayer('.showup .play', '.overlay');
   player.init();
+
+  const differenceInfoNode = new DifferenceInfo(
+    '.officerold',
+    '.officernew',
+    '.officer__card-item'
+  );
+  differenceInfoNode.init();
+
+  new Forms('.form').init();
 });
