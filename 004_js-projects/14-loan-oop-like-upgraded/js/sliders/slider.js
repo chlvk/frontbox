@@ -13,8 +13,8 @@ class Slider {
       ':scope > :not(button)'
     );
     this.buttonNodes = document.querySelectorAll(buttonsSelector);
-    this.prevButtonNode = document.querySelector(prevSelector);
-    this.nextButtonNode = document.querySelector(nextSelector);
+    this.prevButtonNodes = document.querySelectorAll(prevSelector);
+    this.nextButtonNodes = document.querySelectorAll(nextSelector);
     this.activeClass = activeClass;
     this.isAnimated = isAnimated;
     this.isAutoplayOn = isAutoplayOn;

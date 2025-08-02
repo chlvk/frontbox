@@ -41,11 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const player = new VideoPlayer('.showup .play', '.overlay');
   player.init();
 
-  const differenceInfoNode = new DifferenceInfo(
-    '.officerold',
-    '.officernew',
-    '.officer__card-item'
-  );
+  const differenceInfoNode = new DifferenceInfo('.officerold', '.officernew', '.officer__card-item');
   differenceInfoNode.init();
 
   new Forms('.form').init();

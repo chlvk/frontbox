@@ -7,8 +7,8 @@ class MainSlider extends Slider {
   #timeoutId = null;
   #startIndex = 1;
 
-  constructor(buttonsSelectors) {
-    super(buttonsSelectors);
+  constructor(buttonsSelector, prevSelector, nextSelector) {
+    super(buttonsSelector, prevSelector, nextSelector);
 
     this.slideIndex = this.#startIndex;
   }
@@ -67,25 +67,46 @@ class MainSlider extends Slider {
     }
   }
 
-  render() {
+  #bindTriggers() {
     // смена страниц по нажатию кнопок слайдера
     this.buttonNodes.forEach((item) => {
       item.addEventListener('click', () => {
         this.#plusSlide(1);
       });
 
+      try {
+        item
+          .closest('.sidecontrol')
+          .firstElementChild.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            this.slideIndex = this.#startIndex;
+            this.#showSlide(this.slideIndex);
+          });
+      } catch (error) {
+        //error
+      }
       // ссылка на первую страницу с логотипом
-      item
-        .closest('.sidecontrol')
-        .firstElementChild.addEventListener('click', (evt) => {
-          evt.preventDefault();
-          this.slideIndex = this.#startIndex;
-          this.#showSlide(this.slideIndex);
-        });
     });
 
     // активация первого слайда
     this.#showSlide(this.slideIndex);
+
+    // для кнопок переключения внизу второй страницы
+    this.nextButtonNodes.forEach((item) => {
+      item.addEventListener('click', () => {
+        this.#plusSlide(1);
+      });
+    });
+
+    this.prevButtonNodes.forEach((item) => {
+      item.addEventListener('click', () => {
+        this.#plusSlide(-1);
+      });
+    });
+  }
+
+  render() {
+    this.#bindTriggers();
   }
 }
 

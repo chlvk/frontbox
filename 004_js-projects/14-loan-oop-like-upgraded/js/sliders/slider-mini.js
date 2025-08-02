@@ -53,8 +53,12 @@ class MiniSlider extends Slider {
   }
 
   #bindTriggers() {
-    this.nextButtonNode.addEventListener('click', this.#showNextSlide);
-    this.prevButtonNode.addEventListener('click', this.#showPreviousSlide);
+    this.nextButtonNodes.forEach((item) =>
+      item.addEventListener('click', this.#showNextSlide)
+    );
+    this.prevButtonNodes.forEach((item) =>
+      item.addEventListener('click', this.#showPreviousSlide)
+    );
   }
 
   #customizeSlides() {
